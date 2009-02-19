@@ -50,7 +50,6 @@ class IO
 
   def sysread(*args)
 		if Fiber.current[:neverblock]
-			kernel.puts 'trying to read'
 			res = read_neverblock(*args)
     else
       res = read_blocking(*args)
@@ -64,7 +63,7 @@ class IO
 			begin 
 				buffer << sysread(NB_BUFFER_LENGTH > length ? NB_BUFFER_LENGTH : length, sbuffer)
 				sbuffer.slice!(length..sbuffer.length-1) if !sbuffer.nil?
-			rescue Errno::EOFError
+			rescue EOFError
 				return nil
 			end
 		end
@@ -119,7 +118,7 @@ class IO
 			while condition.call(res)
 			  res << read(1)
 			end
-		rescue Errno::EOFError
+		rescue EOFError
 		end
 		res
 	end
@@ -128,7 +127,7 @@ class IO
 		res = []
 		begin
 			loop{res << readline}
-		rescue Errno::EOFError
+		rescue EOFError
 		end
 		res
 	end
@@ -140,14 +139,14 @@ class IO
 	def getc
 		begin
 			res = readchar
-		rescue Errno::EOFError
+		rescue EOFError
 			res = nil
 		end
 	end
 
 	def readline(sep = "\n")
 		res = gets(sep)
-		raise Errno::EOFError if res == nil
+		raise EOFError if res == nil
 		res
 	end
 

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "neverblock"
   s.version  = "0.1.5"
-  s.date     = "2008-11-06"
+  s.date     = "2009-2-19"
   s.summary  = "Utilities for non-blocking stack components"
   s.email    = "oldmoe@gmail.com"
   s.homepage = "http://github.com/oldmoe/neverblock"
@@ -15,7 +15,9 @@ Gem::Specification.new do |s|
 		"lib/never_block.rb", 
 		"lib/neverblock-pg.rb", 
 		"lib/neverblock-mysql.rb", 
-		"lib/never_block/extensions/fiber_extensions.rb", 
+		"lib/never_block/extensions/fiber_extensions.rb",
+		"lib/never_block/extensions/kernel_extensions.rb",
+		"lib/never_block/extensions/timeout_extensions.rb",
 		"lib/never_block/pool/fiber_pool.rb", 
 		"lib/never_block/pool/fibered_connection_pool.rb",
     "lib/never_block/frameworks/rails.rb",
